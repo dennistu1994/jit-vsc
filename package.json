@@ -1,0 +1,65 @@
+{
+	"name": "jit-vsc",
+	"displayName": "jit-vsc",
+	"description": "my vscode extension",
+	"publisher": "jit",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.32.3"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:jit-vsc.copyDottedPath",
+		"onCommand:jit-vsc.copyImport"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "jit-vsc.copyDottedPath",
+				"title": "Copy Dotted Path"
+			},
+			{
+				"command": "jit-vsc.copyImport",
+				"title": "Copy Import"
+			}
+		],
+		"commandPalette": [
+			{
+				"command": "jit-vsc.copyDottedPath",
+				"when": "false"
+			},
+			{
+				"command": "jit-vsc.copyImport",
+				"when": "false"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "resourceLangId == python && editorHasMultipleSelections == false",
+					"command": "jit-vsc.copyDottedPath",
+					"group": "jit-vsc"
+				},
+				{
+					"when": "resourceLangId == python && editorHasMultipleSelections == false",
+					"command": "jit-vsc.copyImport",
+					"group": "jit-vsc"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"eslint": "^5.13.0",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	}
+}
